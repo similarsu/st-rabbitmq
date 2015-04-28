@@ -15,16 +15,23 @@ import com.rabbitmq.client.QueueingConsumer;
  * @version v1.0
  */
 public class Receive {
-    private final static String QUEUE_NAME = "hello";
+    private final static String QUEUE_NAME = "send.first";
+
+    private final static String HOST = "192.168.44.131";
+    private final static int PORT = 5672;
+    private final static String USERNAME = "receive";
+    private final static String PASSWORD = "receive";
+    private final static String VHOST = "first-vhost";
 
     public static void main(String[] argv) throws java.io.IOException,
             java.lang.InterruptedException {
 
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("192.168.44.131");
-        factory.setVirtualHost("apistore");
-        factory.setUsername("yykfk");
-        factory.setPassword("wzga218");
+        factory.setHost(HOST);
+        factory.setPort(PORT);
+        factory.setVirtualHost(VHOST);
+        factory.setUsername(USERNAME);
+        factory.setPassword(PASSWORD);
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
 
